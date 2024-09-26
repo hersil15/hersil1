@@ -1,2 +1,2 @@
 # hersil1
- mi primer ejercio en el curso
+ mi primer ejercicio en el curso
