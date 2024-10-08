@@ -1,8 +1,9 @@
 /* SELECTOR UNIVERSAL*/
 
-*{ margin: 0%;
-    font-family: "Edu NSW ACT Foundation", cursive;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
+* {
+  margin: 0%;
+  font-family: "Edu NSW ACT Foundation", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
