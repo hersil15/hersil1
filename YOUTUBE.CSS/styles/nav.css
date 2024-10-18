@@ -1,0 +1,19 @@
+.navbar{
+  background-color: rgb(8, 8, 8);
+  color: red;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.divtwo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 252, 252);
+}
+.divthree{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
