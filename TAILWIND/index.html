@@ -3,9 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css"/>
 </head>
 <body>
-  
+  <h1 class="text-orange-600
+  bg-blue-600
+  text-center
+  h-[100vh]
+  flex
+  justify-center
+  items-center
+  "> <span class="animate-pulse">Hola, como estan?</span>Mundo
+  </h1>
+  <main class="
+  grid
+  grid-cols-1
+  md:grid-cols-3
+  h-[100vh]
+  p-[25px]
+  justify-items-center
+  content-center
+  ">
+    <div data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000"
+     class="border flex flex-col p-8 justify-center
+    items-center rounded-xl bg-gray-200 shadow-md gap-[8px] ">
+      <p>imagen</p>
+      <h2>titulo</h2>
+      <p>descripcion</p>
+    </div>
+    <div data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000"
+     class="border flex flex-col p-8 justify-center
+    items-center rounded-xl bg-gray-200 shadow-md gap-[8px] ">
+      <p>imagen</p>
+      <h2>titulo</h2>
+      <p>descripcion</p>
+    </div>
+    <div data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000"
+     class="border flex-col p-8 justify-center
+    items-center rounded-xl bg-gray-200 shadow-md gap-[8px] ">
+      <p>imagen</p>
+      <h2>titulo</h2>
+      <p>descripcion</p>
+    </div>
+
+
+
+  </main>
 </body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </html>
