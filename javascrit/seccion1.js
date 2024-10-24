@@ -1,12 +1,11 @@
-//alert("me ejecuto desde un archivo externo");
+alert("me ejecuto de un archivo externo")
 //comentario de una sola linea
 /*
 cometario de varias lineas
-
+comentaio de varias lineas
 */
-//la consola
-console.log("hola mundo");
-
+//LA CONSOLA
+console.log("I'm learning js");
 //VARIABLES
 /* incializacion de variable*/
 var edad = 5;
@@ -39,7 +38,7 @@ var carro = {
 // undefined
 var indefinido;
 //Null
-var nulo= null:
+var nulo= null;
 
 //OPERADORES COMPATIVOS
 //Aritmeticos
@@ -47,7 +46,6 @@ var suma = 5+3;
 var resta = 5-3;
 var multiplicar = 5*3;
 var division = 5/3;
-
 //Modulo
 var modulo = 5 % 2;
 
