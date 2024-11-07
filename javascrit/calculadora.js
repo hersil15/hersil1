@@ -17,4 +17,4 @@ function calc(input1, input2, oper) {
   };
   return result
 }
-  console.log(calc(4, 7, "**"))
+  console.log(calc(4, 7, "+"))
