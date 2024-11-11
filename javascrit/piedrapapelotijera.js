@@ -1,44 +1,36 @@
-function generareleccionpc (){
-const opciones = ["piedra", "papel", "tijera"];
-const ordenAleatorio = Math.floor(Math.random()*3);
-return opciones[ordenAleatorio]
+let rondasJugadas = 0;
+let victoriasJugador = 0;
+let victoriasPc = 0;
 
+function generarEleccionPc (){
+  const opciones = ["piedra", "papel", "tijera"];
+  const ordenAleatorio = Math.floor(Math.random()*3);
+  return opciones[ordenAleatorio]
 }
-// console.log(generareleccionpc());
 
 function elegirGanador(eleccionJugador, eleccionPc){
   if (eleccionJugador === eleccionPc) {
     return "Empate";
   } else if (
-    (eleccionJugador === "Piedra" && eleccionPc === "Tijera") ||
-    (eleccionJugador === "Papel" && eleccionPc === "Piedra") ||
-    (eleccionJugador === "Tijera" && eleccionPc === "Papel")
+    (eleccionJugador === "piedra" && eleccionPc === "tijera") ||
+    (eleccionJugador === "papel" && eleccionPc === "piedra") ||
+    (eleccionJugador === "tijera" && eleccionPc === "papel")
   ) {
-  return "Jugador";
+    return "Jugador";
   } else {
     return "Pc";
   }
 }
 
-function jugarPiedraPapelTijera() {
-  let rodasJugadas = 0;
-  let victoriasJugador = 0;
-  let victoriasPc = 0;
-}
 while (true) {
   const eleccionJugador = prompt("Elige Piedra, Papel o Tijera:");
-  if (!["Piedra", "Papel", "Tijera"].includes(eleccionJugador)) {
+  if (!["piedra", "papel", "tijera"].includes(eleccionJugador)) {
     console.log("Selección inválida. Por favor, elige Piedra, Papel o Tijera.");
-    continue;
-  }
-}
-
-const eleccionPc = generareleccionpc();
-    console.log("La computadora eligió: ${eleccionPc}");
-
+  } else {
+    const eleccionPc = generarEleccionPc();
+    console.log(`La computadora eligió: ${eleccionPc}`);
     const resultado = elegirGanador(eleccionJugador, eleccionPc);
     rondasJugadas++;
-
     if (resultado === "Empate") {
       console.log("¡Es un empate!");
     } else if (resultado === "Jugador") {
@@ -49,7 +41,7 @@ const eleccionPc = generareleccionpc();
       victoriasPc++;
     }
     console.log(`
-      Partidas jugadas: ${partidasJugadas}
+      Partidas jugadas: ${rondasJugadas}
       Victorias del usuario: ${victoriasJugador}
       Victorias de la computadora: ${victoriasPc}
     `);
@@ -60,6 +52,3 @@ const eleccionPc = generareleccionpc();
     }
   }
 }
-
-// Iniciar el juego
-jugarPiedraPapelTijera();
