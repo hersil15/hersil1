@@ -28,6 +28,7 @@ Requisitos:
      - mostrar_vehiculos(): imprime la información de todos los vehículos en la flota.
      - buscar_vehiculo(marca, modelo): busca un vehículo en la flota según la marca y el modelo, y devuelve el objeto Vehiculo si se encuentra disponible. Si no está disponible, muestra un mensaje indicando que el vehículo no está disponible o no se encontró.
 
+
 Ejemplo de Uso:
 
 1. Crear algunos vehículos y añadirlos a la flota de la empresa.
@@ -36,7 +37,16 @@ Ejemplo de Uso:
 4. Devolver un vehículo y verificar si vuelve a estar disponible.
 */
 
+/**
+ * @class Vehiculo - Clase para gestionar la información de un vehículo
+ */
 class Vehiculo {
+  /**
+   * @param {string} marca - Marca del vehículo
+   * @param {string} modelo - Modelo del vehículo
+   * @param {number} anio - Año de fabricación del vehículo
+   * @param {boolean} disponible - Indica si el vehículo está disponible para alquilar (por defecto true)
+   */
   constructor(marca, modelo, anio, disponible = true) {
     this.marca = marca;
     this.modelo = modelo;
@@ -44,6 +54,9 @@ class Vehiculo {
     this.disponible = disponible;
   }
 
+  /**
+   * @method alquilar - Cambia el estado de disponibilidad del vehículo a false si está disponible
+   */
   alquilar() {
     if (this.disponible) {
       console.log(
@@ -57,6 +70,9 @@ class Vehiculo {
     }
   }
 
+  /**
+   * @method devolver - Cambia el estado de disponibilidad del vehículo a true si no está disponible
+   */
   devolver() {
     if (!this.disponible) {
       console.log(
@@ -68,6 +84,9 @@ class Vehiculo {
     }
   }
 
+  /**
+   *  @method informacion - Imprime toda la información del vehículo (marca, modelo, año, disponibilidad)
+   */
   informacion() {
     /*
     console.log(this.modelo, this.marca, this.anio, this.disponible)
@@ -94,15 +113,29 @@ class Vehiculo {
   }
 }
 
+/**
+ * @class EmpresaAlquiler - Clase para gestionar la flota de vehiculos de una empresa de alquiler
+ */
 class EmpresaAlquiler {
+  /**
+   * @constructor
+   * @param {array} flota - Lista de vehiculos disponibles en la empresa
+   */
   constructor(flota = []) {
     this.flota = flota;
   }
 
+  /**
+   * @method agregarVehiculo - Añade un vehículo a la flota
+   * @param {object} vehiculo - Objeto vehiculo a agregar a la flota 
+   */
   agregarVehiculo(vehiculo) {
     this.flota.push(vehiculo);
   }
 
+  /**
+   * @method mostrarVehiculosDisponibles - Muestra la información de todos los vehículos que están disponibles para alquilar
+   */
   mostrarVehiculosDisponibles() {
     /*
       let vehiculos_disponibles = this.flota.filter(
@@ -134,6 +167,9 @@ class EmpresaAlquiler {
     }
   }
 
+  /**
+   * @method mostrarVehiculos - Muestra la información de todos los vehículos en la flota
+   */
   mostrarVehiculos() {
     for (let vehiculo of this.flota) {
       console.log(
@@ -144,22 +180,39 @@ class EmpresaAlquiler {
             Año: ${vehiculo.anio}
             Disponibilidad: ${vehiculo.disponible ? "Disponible" : "Ocupado"}
         `
-      );
+           );
     }
+  }
+
+  buscar_vehiculo(marca, modelo) {
+    const vehiculo = this.flota.find(v => v.marca === marca && v.modelo === modelo);
+    if (vehiculo) {
+      if (vehiculo.disponible) {
+        console.log(`El vehículo ${marca} ${modelo} está disponible.`);
+        return vehiculo;
+      } else {
+        console.log(`El vehículo ${marca} ${modelo} no está disponible en este momento.`);
+      }
+    } else {
+      console.log(`No se encontró el vehículo ${marca} ${modelo} en la flota.`);
+    }
+    return null;
   }
 }
 
 //1
 let vehiculo1 = new Vehiculo("Ford", "Camaro", "1997");
 let vehiculo2 = new Vehiculo("Harley-Davidson", "San Luis", "2023");
-let vehiculo3 = new Vehiculo("Jeep", "Wagoneer", "2021")
+let vehiculo3 = new Vehiculo("Jeep", "Wagoneer", "2021");
 
-let vehiculos = [vehiculo1, vehiculo2, vehiculo3]
+let vehiculos = [vehiculo1, vehiculo2, vehiculo3];
 
 //2
-let autorent = new EmpresaAlquiler(vehiculos)
-autorent.mostrarVehiculosDisponibles()
+let autorent = new EmpresaAlquiler(vehiculos);
+autorent.mostrarVehiculosDisponibles();
 
 //3
-autorent.flota[2].alquilar()
-autorent.flota[2].informacion()
+autorent.flota[2].alquilar();
+autorent.flota[2].informacion();
+
+console.log (autorent.buscar_vehiculo("Ford","Fusion"));
