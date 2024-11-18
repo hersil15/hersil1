@@ -1094,12 +1094,12 @@ console.error("Hola, soy un mensaje de error");
 
   - ListaTareas
     - Propiedades: tareas (array de tareas)
-    - Metodos: Agregar tarea(tarea), Completar tarea(tarea), Eliminar tarea(tarea), 
+    - Metodos: Agregar tarea(tarea), Completar tarea(tarea), Eliminar tarea(tarea),
     ver tareas()
 
   El programa debe de permitir al usuario agregar tareas,
   completar tareas y eliminar tareas. Ademas debe de permitir
-  al usuario ver todas las tareas. 
+  al usuario ver todas las tareas.
 
   El programa debe de tener un menu que permita al usuario
   seleccionar una opcion.
