@@ -1,122 +1,290 @@
+// ES6 (map, arrows functions, spread)
 
-/*
-  En un objeto hay propiedades y metodos
-  Las propiedades devuelven un valor que puede ser string, number, boolean, etc.
-  Los metodos ejecutan una funcion
+//map 
+
+/* 
+
+Permite transformar elementos de un array sin modificar el original
+
 */
 
-//Metodos de strings
-var texto = "Hola, soy un texto";
-//Transformar un string a mayusculas
-console.log(texto.toUpperCase());
-//Transformar un string a minusculas
-console.log(texto.toLowerCase());
-//Obtiene la posicion de una palabra en un string
-console.log(texto.indexOf("soy"));
-//Corta un string
-console.log(texto.slice(5, 8));
-//Divide un string en un array
-console.log(texto.split(" "));
-//Reemplaza una palabra por otra
-console.log(texto.replace("Hola", "Adios"));
-//Reemplaza todas las ocurrencias de una palabra por otra
-console.log(texto.replaceAll("o", "0"));
-//Verifica si un string incluye una palabra
-console.log(texto.includes("Hola"));
-//Verifica si un string empieza con una palabra
-console.log(texto.startsWith("Hola"));
-//Verifica si un string termina con una palabra
-console.log(texto.endsWith("texto"));
-//Obtiene la posicion de un caracter en un string
-console.log(texto.charAt(8));
-//Obtiene el codigo ASCII de un caracter
-console.log(texto.charCodeAt(2));
-//Recorta los espacios en blanco de un string
-console.log("  Hola, soy un texto   ".trim());
-//Repite un string
-console.log(texto.repeat(3));
-//Concatena dos strings
-console.log(texto.concat(" y yo soy otro texto"));
+const numbers = [[14,24,34,68], 2, 3, 4, 5,]
 
-//Ejercicios de metodos de strings
-//1. Crea una función que reciba un string y devuelva la cantidad de letras que tiene.
-//2. Crea una función que reciba un string y devuelva la cantidad de palabras que tiene.
-//3. Crea una función que reciba un string y devuelva el string invertido. (Hola -> aloH) (Utiliza recursividad)
-//4. Verifica si un string es un palindromo (se lee igual de izquierda a derecha que de derecha a izquierda)
+const newArray = numbers[0].map(number => number * 2);
 
+console.log(newArray);
 
-//Ejercicios de metodos de strings
-//1. Crea una función que reciba un string y devuelva la cantidad de letras que tiene.
-//2. Crea una función que reciba un string y devuelva la cantidad de palabras que tiene.
-//3. Crea una función que reciba un string y devuelva el string invertido. (Hola -> aloH) (Utiliza recursividad)
-//4. Verifica si un string es un palindromo (se lee igual de izquierda a derecha que de derecha a izquierda)
+//spread operator
 
-//1 (De forma sencilla)
-function contarLetras(texto){
-  if(typeof texto !== "string"){
-    return "El valor debe ser un string";
-  }
-  return texto.length;
-}
-console.log(contarLetras("Hola, soy un texto")); //17
+/* 
 
-//1 (Solo contando letras)
-function contarLetras(texto){
-  if(typeof texto !== "string"){
-    return "El valor debe ser un string";
-  }
-  return texto.split(" ").join("").length;
-}
-console.log(contarLetras("Hola, soy un texto")); //13
+Es un operador que permite expandir elementos de un array, realizando una copia
+del array original sin modificarlo y sin perder sus elementos, y agregando nuevos
+valores
 
-//2
-function contarPalabras(texto){
-  if(typeof texto !== "string"){
-    return "El valor debe ser un string";
-  }
-  return texto.split(" ").length;
-}
-console.log(contarPalabras("Hola, soy un texto")); //4
+*/
 
-//3
-function invertirTexto(texto){
-  if(typeof texto !== "string"){
-    return "El valor debe ser un string";
-  }
-  if(texto === ""){
-    return "";
-  }
-  return invertirTexto(texto.slice(1)) + texto.charAt(0);
+const moreNumbers = [...numbers, 6, 7, 8, 9, 10];
+
+console.log(moreNumbers);
+
+const User = {
+  name: "Delvis",
+  age: 23
 }
 
-console.log(invertirTexto("Hola")); //aloH
+const updatedUser = { ...User, country: "Venezuela"}
 
-//3
-function invertirTexto(texto){
-  if(typeof texto !== "string"){
-    return "El valor debe ser un string";
-  }
-  if(texto === ""){
-    return "";
-  }
-  return invertirTexto(texto.slice(1)) + texto.charAt(0);
+console.log(updatedUser);
+
+const numbersBidimensionales =[
+  [1, 2, 3],
+  [4, 5, 6],]
+
+const newNumbersBidimensionales = [...numbersBidimensionales, [7, 8, 9]];
+
+console.log(newNumbersBidimensionales);
+
+const esteSiDefinitivoTesisV5EstaSi = [newNumbersBidimensionales, [10, 11, 12]];
+
+console.log(esteSiDefinitivoTesisV5EstaSi);
+
+//Desestructuracion
+
+/* 
+
+Permite extraer elementos de un objeto u array y asignarlos a variables
+de una manera mas directa
+
+*/
+
+//Para Objetos
+
+const person1 = {
+  names: "Delvis",
+  age: 23,
+  country: "Venezuela",
+  city: "Caracas"
 }
 
-console.log(invertirTexto("Hola")); //aloH
+const person1Name = person1.names;
 
-//4
-//4
-function esPalindromo(texto){
-  if(typeof texto !== "string"){
-    return "El valor debe ser un string";
-  }
-  texto = texto.toLowerCase();
-  //console.log(texto.split(" ").join(""), invertirTexto(texto).split(" ").join(""));
-  if(texto.split(" ").join("") === invertirTexto(texto).split(" ").join("")){
-    return "Es palindromo";
-  }
-  return "No es palindromo";
+const person1Age = person1.age;
+
+console.log(person1Name);
+
+const {names, age, country, city} = person1;
+
+//Para Arrays
+
+const colors =["red", "green", "blue", "yellow"];
+
+const [color1, color2, color3, color4] = colors;
+
+console.log(color1);
+
+//En funciones
+
+function IntroduceMe({names}) {
+  console.log(`Hola, soy ${names}, el desarrollador de este sitio web`);
 }
 
-console.log(esPalindromo("La ruta nos aporto otro paso natural")); //Es palindromo
+IntroduceMe(person1);
 
+//DOM
+
+
+//Ejemplo de uso de DOM
+
+//Crear un nuevo elemento del DOM
+
+const newDiv = document.createElement("div")
+
+//Propiedades de un elemento del dom manipulables desde js
+
+/* newDiv.innerHTML = `<h1>Esto es un nuevo div</h1>`
+
+newDiv.className = "Button"
+
+newDiv.id = "newDiv"
+
+newDiv.style.color = "red"
+
+newDiv.innerText = "Esto es un parrafo"
+
+document.body.appendChild(newDiv) */
+
+//Selectores
+
+//Por el nombre del tag
+
+const h1 = document.querySelector("h1")
+
+h1.innerText = "Esto es un h1"
+
+h1.className = "Tittle"
+
+// Otras formas
+
+/* const h1 = document.querySelector("h1")
+
+const h1s = document.querySelectorAll("h1") 
+
+*/
+
+//Por la clase
+
+const button = document.getElementsByClassName("Button")
+
+button[0].innerText = "Esto es un boton"
+
+//Por id
+
+const container = document.getElementById("principal")
+
+container.className = "Container"
+
+//Por querySelector 
+
+const container2 = document.querySelector("#principal")
+
+//Todos los elementos de una clase
+
+const buttons = document.querySelectorAll(".Button")
+
+buttons.forEach((button, index) => {
+  button.innerText = `Esto es el boton ${index + 1}`
+})
+
+//Eventos
+
+const goodButton = document.querySelector("#buton-bueno")
+
+goodButton.addEventListener("click", () => {
+  console.log("Presionaste el boton bueno")
+})
+
+function saludar(){
+  alert("Hola desde la sección 3");
+}
+
+let boton = document.getElementById("boton");
+
+/*
+  Programación orientada a eventos
+  Consta de la creación de un evento y la asignación de una función a dicho evento
+  En este caso, se asigna la función saludar al evento click del botón
+*/
+boton.addEventListener("click", saludar);
+
+let input = document.getElementById("input");
+
+//Configurar que el evento se ejecute cuando presiono la tecla "Enter"
+input.addEventListener("keydown", function(event){
+  if(event.key == "Enter"){
+    saludar();
+  }
+});
+
+let videos = [
+  {
+    titulo: "Video 1",
+    duracion: 30
+  },
+  {
+    titulo: "Video 2",
+    duracion: 40
+  },
+  {
+    titulo: "Video 3",
+    duracion: 50
+  }
+]
+/**
+ * Input de búsqueda
+ */
+let search = document.getElementById("search");
+
+/**
+ * Botón de búsqueda
+ */
+let searchButton = document.getElementById("searchButton");
+
+/**
+ * @function buscarVideo
+ * @description Busca un video en el array de videos
+ * @returns {void}
+ */
+function buscarVideo(){
+  let searchValue = search.value;
+  let result = videos.filter(video => video.titulo == searchValue);
+  if(result.length > 0){
+    alert("Video encontrado: " + result[0].titulo);
+  } else {
+    alert("Video no encontrado");
+  }
+}
+
+/**
+ * Ejecutar función si se hace click en el botón
+ */
+searchButton.addEventListener("click", buscarVideo);
+
+/**
+ * Ejecutar funcion si se presiona enter
+ */
+search.addEventListener("keydown", function(evento){
+  if(evento.key == "Enter"){
+    buscarVideo();
+  }
+});
+
+/**
+ * Programación funcional
+ * Consta de la creación de funciones que reciben otras funciones como parámetros
+ * En este caso, se crea una función que recibe un array y una función de filtrado
+ */
+
+/**
+ * @function filtrarVideos
+ * @description Filtra un array de videos según un criterio
+ * @param {Array} videos
+ * @param {Function} filtro
+ * @returns {Array}
+ */
+function filtrarVideos(videos, filtro){
+  return videos.filter(filtro);
+}
+
+/**
+ * @function validarLongitudArray
+ * @description Valida si un array tiene una longitud mayor a 0
+ * @param {Array} array
+ * @returns {Boolean}
+ */
+function validarLongitudArray(array){
+  return array.length > 0;
+}
+
+/**
+ * @function imprimirResultado
+ * @description Imprime el resultado de la búsqueda
+ * @returns {void}
+ */
+function imprimirResultado(){
+  let result = filtrarVideos(videos, video => video.titulo == search.value);
+  if(validarLongitudArray(result)){
+    alert("Su video fue encontrado");
+  } else {
+    alert("No se encontró ningún video");
+  }
+}
+
+/**
+ * Crea una calculadora utilizando
+ * - Programación orientada a eventos
+ * - Programación funcional
+ * - Programación orientada a objetos
+ * 
+ * Nota: La programación orientada a eventos debe tener interfaz gráfica
+ */
